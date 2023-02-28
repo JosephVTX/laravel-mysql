@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+
+  laravel:
+
+    build: .
+    container_name: laravel
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: bitnami/mysql:latest
+    container_name: mysql
+    restart: always
+    environment:  
+
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=api
